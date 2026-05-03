@@ -8,6 +8,9 @@ import { User } from './user/entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from './guards/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { ProductModule } from './product/product.module';
+import { CategoryModule } from './category/category.module';
+import { DiscountModule } from './discount/discount.module';
 
 @Module({
   imports: [
@@ -34,6 +37,9 @@ import { APP_GUARD } from '@nestjs/core';
       secret: 'asdsadsadsadasd12121',
       signOptions: { expiresIn: '30s' },
     }),
+    ProductModule,
+    CategoryModule,
+    DiscountModule,
   ],
   controllers: [AppController],
   providers: [
