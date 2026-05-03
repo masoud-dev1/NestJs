@@ -11,6 +11,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { DiscountModule } from './discount/discount.module';
+import { Product } from './product/entities/product.entity';
+import { Category } from './category/entities/category.entity';
+import { Discount } from './discount/entities/discount.entity';
 
 @Module({
   imports: [
@@ -27,7 +30,7 @@ import { DiscountModule } from './discount/discount.module';
         username: configService.get('DB_USERNAME', 'postgres'),
         password: configService.get('DB_PASSWORD', '1'),
         database: configService.get('DB_NAME', 'nestjs'),
-        entities: [User],
+        entities: [User, Product, Category, Discount],
         synchronize: false, // فقط در توسعه (در production false)
       }),
     }),
