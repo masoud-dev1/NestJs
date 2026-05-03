@@ -3,6 +3,9 @@ import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 import { User } from './src/user/entities/user.entity';
+import { Product } from './src/product/entities/product.entity';
+import { Category } from './src/category/entities/category.entity';
+import { Discount } from './src/discount/entities/discount.entity';
 
 // بارگذاری متغیرهای محیطی (مشابه کاری که NestJS در AppModule انجام می‌دهد)
 config();
@@ -16,7 +19,7 @@ export default new DataSource({
   username: configService.get('DB_USERNAME', 'postgres'),
   password: configService.get('DB_PASSWORD', '1'),
   database: configService.get('DB_NAME', 'nestjs'),
-  entities: [User], // بعد از build
+  entities: [User, Product, Category, Discount], // بعد از build
   migrations: ['src/migrations/*.ts'],
   synchronize: false, // هماهنگ با app.module که معمولاً false برای migration
   logging: true,
